@@ -1,0 +1,51 @@
+image {
+  width: 150px;
+  height: 150px;
+}
+
+#bands{
+  color: white;
+  background-color: green;
+}
+
+#hobbies{
+  color: white;
+  background-color: blue;
+}
+form{
+  background-color: red;
+  color: purple;
+}
+legend{
+  color: purple;
+  background-color: red;
+}
+ul {
+  list-style-type: square;
+}
+
+ol {
+  list-style-type:lower-roman;
+}
+table, th, td{
+  border: 1px solid purple;
+  border-radius: 10px
+}
+h1, h2{
+  color: #006622;
+}
+h1{
+  background-color: red;
+  font-family:monospace;
+}
+h2{
+  background-color: orange;
+  font-weight:300;
+}
+h3{
+  text-decoration: underline;
+}
+.biography{
+  color:purple;
+  font-family: sans-serif;
+}
