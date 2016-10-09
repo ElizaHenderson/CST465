@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Assignment 1</title>
+    <link rel="stylesheet" href="../CSS/DefaultStyles.css">
+  </head>
+
+  <body>
+    <header>
+      <h1>Assignment 1 - Eliza Henderson</h1>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="https://weblogs.asp.net/bsimser">Fear and Loathing</a></li>
+        <li><a href="http://odetocode.com/blogs/all">Ode To Code</a></li>
+        <li><a href="http://www.hanselman.com/blog/">Scott Hanselman</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <form action="http://www.oit.edu/cst465" method="POST">
+        <fieldset>
+          <label for="uxName">Name:</label><input id="uxName" name="Name" type="text">
+          <br>
+          <label for="uxEmailAddress">Email:</label><input id="uxEmailAddress" name="EmailAddress" type="text">
+          <br>
+          <label for="uxUserType">You are:</label>
+          <select name="UserType" id="uxUserType">
+            <option value="staff">Faculty/Staff</option>
+            <option value="student">Student</option>
+          </select><br>
+          <label for="uxHobby">Hobby:</label><input id="uxHobby" name="Hobby" type="text"><br>
+          <label for="uxBand">Band:</label><input id="uxBand" name="Band" type="text"><br>
+          <label for="uxBiography">Bio:</label><textarea id="uxBiography" name="Biography"></textarea><br>
+          <table>
+            <thead>
+              <tr>
+                <th>Course Prefix</th>
+                <th>Course Number</th>
+                <th>Course Description</th>
+              </tr>
+            </thead>
+              <tr>
+                <td>
+                  <label for="uxCoursePrefix"></label><input id="uxCoursePrefix" name="CoursePrefix" type="text">
+                </td>
+                <td>
+                  <label for="uxCourseNumber"></label><input id="uxCourseNumber" name="CourseNumber" type="text">
+                </td>
+                <td>
+                  <label for="uxCourseDescription"></label><input id="uxCourseDescription" name="CourseDescription" type="text">
+                </td>
+              </tr>
+          </table>
+          <input id="uxNickname" name="Nickname" type="hidden" value="idk">
+          <input id="uxSubmit" type="submit" value="Save Profile"/>
+        </fieldset>
+      </form>
+    </main>
+
+    <footer>
+      &copy; Eliza Henderson. All rights reserved.
+    </footer>
+  </body>
+</html>
