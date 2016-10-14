@@ -1,0 +1,25 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="thispage.master.cs" Inherits="Lab3.WebForms.thispage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <nav>
+            <asp:ContentPlaceHolder ID="nav" runat="server">
+
+            </asp:ContentPlaceHolder>
+        </nav>
+    
+        <main>
+            <asp:ContentPlaceHolder ID="main" runat="server">
+
+            </asp:ContentPlaceHolder>
+        </main>
+    </form>
+</body>
+</html>
