@@ -39,7 +39,7 @@ namespace Lab3.WebForms
             submit.Append("Name: " + uxName.Text + "<br />");
             submit.Append("Priority: " + uxPriority.SelectedValue + "<br />");
             submit.Append("Subject: " + uxSubject.Text + "<br />");
-            submit.Append("Description: " + uxDescription.Text + +"<br />");
+            submit.Append("Description: " + uxDescription.Text +"<br />");
         }
     }
 }

@@ -10,8 +10,12 @@
 <body>
     <form id="form1" runat="server">
         <nav>
+            <ul>
+                <li><asp:hyperlink navigateurl="https://weblogs.asp.net/scottgu" runat="server">Scott Gu</asp:hyperlink></li>
+                <li><asp:hyperlink navigateurl="https://blogs.msdn.microsoft.com/webdev/" runat="server">Web Dev & Tools Blog</asp:hyperlink></li>
+                <li><asp:hyperlink navigateurl="http://www.hanselman.com/blog/" runat="server">hanselman</asp:hyperlink></li>
+            </ul>
             <asp:ContentPlaceHolder ID="nav" runat="server">
-
             </asp:ContentPlaceHolder>
         </nav>
     
