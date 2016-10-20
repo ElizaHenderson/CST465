@@ -28,7 +28,7 @@ namespace Lab3.WebForms
             form.Append("&favoritecolor=" + uxColor.TextBoxText);
             form.Append("&city=" + uxCity.TextBoxText);
 
-            Response.Redirect("ValidatedFromOutput.aspx" + form);
+            Response.Redirect("ValidatedFormOutput.aspx" + form);
         }
     }
 }

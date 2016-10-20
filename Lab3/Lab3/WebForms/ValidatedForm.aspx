@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebForms/thispage.Master" AutoEventWireup="true" CodeBehind="ValidatedForm.aspx.cs" Inherits="Lab3.WebForms.ValidatedForm" %>
 <%@ Register TagPrefix="CST" TagName="RequiredTextBox" src="RequiredTextBox.ascx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <title>VaidatedForm</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="nav" runat="server">
 </asp:Content>
