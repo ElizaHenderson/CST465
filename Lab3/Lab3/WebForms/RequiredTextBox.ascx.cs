@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Lab3.WebForms
 {
-    public partial class RequireedTextBox : System.Web.UI.UserControl
+    public partial class RequiredTextBox : System.Web.UI.UserControl
     {
         public string LabelText
         {

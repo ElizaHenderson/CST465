@@ -178,6 +178,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
     <Content Include="WebForms\Contact.aspx" />
+    <Content Include="WebForms\ValidatedForm.aspx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -224,6 +225,7 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="WebForms\RequiredTextBox.ascx" />
     <Content Include="WebForms\thispage.Master" />
   </ItemGroup>
   <ItemGroup>
@@ -370,12 +372,26 @@
     <Compile Include="WebForms\Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebForms\RequiredTextBox.ascx.cs">
+      <DependentUpon>RequiredTextBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\RequiredTextBox.ascx.designer.cs">
+      <DependentUpon>RequiredTextBox.ascx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\thispage.Master.cs">
       <DependentUpon>thispage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebForms\thispage.Master.designer.cs">
       <DependentUpon>thispage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\ValidatedForm.aspx.cs">
+      <DependentUpon>ValidatedForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\ValidatedForm.aspx.designer.cs">
+      <DependentUpon>ValidatedForm.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

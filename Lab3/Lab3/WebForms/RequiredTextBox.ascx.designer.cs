@@ -10,7 +10,7 @@
 namespace Lab3.WebForms {
     
     
-    public partial class RequireedTextBox {
+    public partial class RequiredTextBox {
         
         /// <summary>
         /// uxLabel control.
