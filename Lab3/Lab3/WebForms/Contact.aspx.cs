@@ -36,10 +36,11 @@ namespace Lab3.WebForms
         protected void uxSubmit_Click(object sender, EventArgs e)
         {
             StringBuilder submit = new StringBuilder();
-            submit.Append("Name: " + uxName.Text + "<br />");
+            submit.Append("<br />Name: " + uxName.Text + "<br />");
             submit.Append("Priority: " + uxPriority.SelectedValue + "<br />");
             submit.Append("Subject: " + uxSubject.Text + "<br />");
             submit.Append("Description: " + uxDescription.Text +"<br />");
+            uxFormOutput.Text = submit.ToString();
         }
     }
 }
