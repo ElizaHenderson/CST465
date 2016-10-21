@@ -11,17 +11,20 @@ namespace Lab3.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Request.QueryString["name"] ==null || Request.QueryString["favoritecolor"] == null || Request.QueryString["city"] == null)
+            if (Request.QueryString["name"] == null || Request.QueryString["favoritecolor"] == null || Request.QueryString["city"] == null)
             {
                 uxInvalidDataArea.Visible = true;
+                uxValidDataArea.Visible = false;
             }
 
-            uxName.Text = Request.QueryString["name"];
-            uxFavoriteColor.Text = Request.QueryString["favoritecolor"];
-            uxCity.Text = Request.QueryString["city"];
+            else
+            {
+                uxName.Text = Request.QueryString["name"];
+                uxFavoriteColor.Text = Request.QueryString["favoritecolor"];
+                uxCity.Text = Request.QueryString["city"];
 
-            uxValidDataArea.Visible = true;
-
+                uxValidDataArea.Visible = true;
+            }
         }
     }
 }

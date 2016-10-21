@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="/css/defaultstyles.css" />
+    @RenderSection("styles", false)
+</head>
+<body>
+    <header>
+        Suckerity.com <br />
+        A sucker is born every minute, don't be one of them.<br />
+        @RenderSection("header", required:false)
+    </header>
+    <div> 
+        @RenderBody()
+    </div>
+    <footer>
+        @RenderSection("footer", required:false)
+    </footer>
+</body>
+</html>
