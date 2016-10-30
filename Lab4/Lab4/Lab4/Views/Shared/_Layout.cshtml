@@ -9,16 +9,26 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link rel="stylesheet" href="/css/defaultstyles.css" />
+    <link rel="stylesheet" href="~/Styles/DefaultStyles.css" />
     @RenderSection("styles", false)
 </head>
 <body>
     <header>
+        @RenderSection("header", required: false)
         Suckerity.com <br />
         A sucker is born every minute, don't be one of them.<br />
-        @RenderSection("header", required:false)
     </header>
-    <div> 
+    
+    <nav>
+        <ul>
+            <li>A</li>
+            <li>thing</li>
+            <li>for</li>
+            <li>reference</li>
+        </ul>
+    </nav>
+    
+    <div id="main"> 
         @RenderBody()
     </div>
     <footer>
