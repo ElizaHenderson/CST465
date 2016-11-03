@@ -1,0 +1,21 @@
+﻿@model List<Lab4.Code.DataObjects.BlogPost>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Add a New Blog Post";
+}
+<h1>Index</h1>
+
+@foreach (var post in Model)
+{
+    <div>
+        <h2>@post.Title</h2>
+        ID: @post.ID<br/>
+        Author: @post.Author<br/>
+        Content: @post.Content<br/>
+        Timestamp: @post.Timestamp<br/>
+
+        @Html.ActionLink("Edit Post", "Edit", new {ID=post.ID })
+    </div>
+    <br/>
+    @Html.ActionLink("Add Post", "Add")
+}
