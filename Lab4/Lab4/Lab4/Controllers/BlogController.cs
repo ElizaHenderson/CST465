@@ -75,7 +75,7 @@ namespace Lab4.Controllers
         {
             var blogPost = new BlogPost();
             blogPost = _thing.Get(model.ID);
-             
+            return View(blogPost);
 
         }
         public BlogController ()
