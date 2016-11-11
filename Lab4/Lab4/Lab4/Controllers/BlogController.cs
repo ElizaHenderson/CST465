@@ -34,8 +34,11 @@ namespace Lab4.Controllers
                 post.ID = model.ID;
                 post.Title = model.Title;
                 _thing.Save(post);
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            else
+                return View(model);
+
         }
         public ActionResult Edit(int id)
         {
@@ -52,7 +55,7 @@ namespace Lab4.Controllers
         [HttpPost]
         public ActionResult Edit(BlogPostModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 BlogPost post = new BlogPost();
                 post.Author = model.Author;
@@ -60,8 +63,19 @@ namespace Lab4.Controllers
                 post.ID = model.ID;
                 post.Title = model.Title;
                 _thing.Save(post);
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            else
+                return View(model);
+            
+
+        }
+
+        public ActionResult ViewSingleBlog(BlogPostModel model)
+        {
+            var blogPost = new BlogPost();
+            blogPost = _thing.Get(model.ID);
+             
 
         }
         public BlogController ()
