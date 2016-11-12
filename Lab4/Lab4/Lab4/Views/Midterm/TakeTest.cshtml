@@ -1,0 +1,17 @@
+﻿@using Lab4.Models.MidTerm
+@model List<TestQuestion>
+@{
+    ViewBag.Title = "TakeTest";
+}
+
+<h2>TakeTest</h2>
+
+@foreach (var question in Model)
+{
+    ID: @question.ID <br />
+    @if (question.GetType().ToString() == "La4.Models.MidTerm.Models.TrueFalseQuestion")
+        @Html.Partial("TrueFalseQuestion", (TrueFalseQuestion)question)
+    @else if (question.GetType().ToString() == "La4.Models.MidTerm.Models.LongAnswer")
+        @Html.Partial("~/Views/Midterm/LongAnswerQuestion")
+       
+}
