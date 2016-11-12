@@ -8,10 +8,20 @@
 
 @foreach (var question in Model)
 {
-    ID: @question.ID <br />
-    @if (question.GetType().ToString() == "La4.Models.MidTerm.Models.TrueFalseQuestion")
-        @Html.Partial("TrueFalseQuestion", (TrueFalseQuestion)question)
-    @else if (question.GetType().ToString() == "La4.Models.MidTerm.Models.LongAnswer")
-        @Html.Partial("~/Views/Midterm/LongAnswerQuestion")
-       
+    ID: @question.ID<br />
+    switch(question.GetType().ToString())
+    {
+        case "La4.Models.MidTerm.Models.TrueFalseQuestion":
+            @Html.Partial("TrueFalseQuestion", (TrueFalseQuestion)question)
+            break;
+        case "La4.Models.MidTerm.Models.LongAnswer":
+            @Html.Partial("~/Views/Midterm/LongAnswerQuestion", (LongAnswerQuestion)question)
+            break;
+        case "La4.Models.MidTerm.Models.ShortAnswer":
+            @Html.Partial("~/Views/Midterm/ShortAnswerQuestion", (ShortAnswerQuestion)question)
+            break;
+        case "La4.Models.MidTerm.Models.MultipleChoiceQuestion":
+            @Html.Partial("~/Views/Midterm/MultipleChoiceQuestion", (MultipleChoiceQuestion)question)
+            break;
+    }
 }
