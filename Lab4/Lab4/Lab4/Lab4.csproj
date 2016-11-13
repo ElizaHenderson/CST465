@@ -262,10 +262,11 @@
     <Content Include="Views\Blog\DefaultTemplates\BlogPost.cshtml" />
     <Content Include="Views\Blog\EditorTemplates\BlogPostModel.cshtml" />
     <Content Include="Views\Midterm\TakeTest.cshtml" />
-    <Content Include="Views\Midterm\DislayResults.cshtml" />
-    <Content Include="Views\Midterm\TrueFalseQuestion.cshtml" />
-    <Content Include="Views\Midterm\ShortAnswer.cshtml" />
-    <Content Include="Views\Midterm\LongAnswer.cshtml" />
+    <Content Include="Views\Midterm\DisplayResults.cshtml" />
+    <Content Include="Views\Midterm\EditorTemplates\TrueFalseQuestion.cshtml" />
+    <Content Include="Views\Midterm\EditorTemplates\ShortAnswerQuestion.cshtml" />
+    <Content Include="Views\Midterm\EditorTemplates\LongAnswerQuestion.cshtml" />
+    <Content Include="Views\Midterm\EditorTemplates\MultipleChoiceQuestion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

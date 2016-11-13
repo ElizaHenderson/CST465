@@ -1,0 +1,11 @@
+﻿@model Lab4.Models.MidTerm.MultipleChoiceQuestion
+
+<h2>@Model.Question</h2>
+@Html.HiddenFor(m=>Model.ID)
+@foreach(string choice in Model.choices)
+{
+    @Html.RadioButtonFor(m => Model.Answer, choice, new { ID = Model.ID })
+    @Html.Label(choice)
+    <br />
+}
+@Html.ValidationMessageFor(m => Model.Answer)

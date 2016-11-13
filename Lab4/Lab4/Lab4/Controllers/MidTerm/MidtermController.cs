@@ -1,6 +1,7 @@
 ﻿using Lab4.Models.MidTerm;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,7 +13,7 @@ namespace Lab4.Controllers.MidTerm
         public int ID { get; set; }
         public string Type { get; set; }
         public string Question { get; set; }
-        public string[] Choices { get; set; }
+        public List<string> Choices { get; set; }
         
     }
     public class MidtermController : Controller
@@ -25,21 +26,34 @@ namespace Lab4.Controllers.MidTerm
         [HttpGet]
         public ActionResult TakeTest()
         {
-            return View();
+            return View(GetQuesitons());
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult TakeTest(List<TestQuestion> answers)
         {
             List<TestQuestion> questions = new List<TestQuestion>();
             questions = GetQuesitons();
-            return View(questions);
+            if(ModelState.IsValid)
+            {
+                foreach(var questiony in answers)
+                {
+                    questiony.Question = questions[questiony.ID-1].Question;
+                }
+                TempData["TestData"] = answers;
+                return View("DisplayResults", answers);
+            }
+            return View(answers);
+            
         }
 
         [HttpGet]
         public ActionResult DisplayResults()
         {
-            return View();
+            List <TestQuestion> data = new List<TestQuestion>();
+            data = (List<TestQuestion>)TempData["TestData"];
+            return View(data);
         }
 
         public List<TestQuestion> GetQuesitons()
@@ -56,27 +70,31 @@ namespace Lab4.Controllers.MidTerm
                     TrueFalseQuestion t = new TrueFalseQuestion();
                     t.ID = question.ID;
                     t.Question = question.Question;
+                    realqs.Add(t);
                 }
                 else if (question.Type == "ShortAnswerQuestion")
                 {
                     ShortAnswerQuestion t = new ShortAnswerQuestion();
                     t.ID = question.ID;
                     t.Question = question.Question;
+                    realqs.Add(t);
                 }
                 else if (question.Type == "LongAnswerQuestion")
                 {
                     LongAnswerQuestion t = new LongAnswerQuestion();
                     t.ID = question.ID;
                     t.Question = question.Question;
+                    realqs.Add(t);
                 }
                 else if (question.Type == "MultipleChoiceQuestion")
                 {
-                    LongAnswerQuestion t = new LongAnswerQuestion();
+                    MultipleChoiceQuestion t = new MultipleChoiceQuestion();
                     t.ID = question.ID;
                     t.Question = question.Question;
+                    t.choices = new List<string>(question.Choices);
+                    realqs.Add(t);
                 }
             }
-
             return realqs;
         }
     }

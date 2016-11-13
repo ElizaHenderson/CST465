@@ -1,0 +1,6 @@
+﻿@model Lab4.Models.MidTerm.ShortAnswerQuestion
+
+<h2>@Model.Question</h2>
+@Html.HiddenFor(m => Model.ID)
+@Html.TextBoxFor(m => Model.Answer)
+@Html.ValidationMessageFor(m => Model.Answer)

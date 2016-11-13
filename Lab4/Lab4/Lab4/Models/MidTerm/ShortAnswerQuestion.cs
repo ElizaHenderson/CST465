@@ -12,5 +12,7 @@ namespace Lab4.Models.MidTerm
         [Required]
         [MaxLength(100, ErrorMessage ="Answer too long. Limit to 100 characters please")]
         public override string Answer { get; set; }
+        public object ModelState { get; internal set; }
+
     }
 }

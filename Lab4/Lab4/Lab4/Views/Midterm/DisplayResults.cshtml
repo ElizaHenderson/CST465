@@ -1,0 +1,15 @@
+﻿@using Lab4.Models.MidTerm
+@model List<TestQuestion>
+@{
+    ViewBag.Title = "DislayResults";
+}
+
+<h2>DislayResults</h2>
+@foreach(var question in Model)
+{
+    @question.ID
+    <text> ) </text>
+    @question.Question <br />
+    @question.Answer <br />
+}
+<br /><br />

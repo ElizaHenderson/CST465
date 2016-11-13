@@ -8,8 +8,10 @@ namespace Lab4.Models.MidTerm
 {
     public class TrueFalseQuestion : TestQuestion
     {
-        [Required]
+        [Required(ErrorMessage = "You didn't put True or False...")]
         [RegularExpression("True|False")]
         public override string Answer { get; set; }
+        public object ModelState { get; internal set; }
+
     }
 }
