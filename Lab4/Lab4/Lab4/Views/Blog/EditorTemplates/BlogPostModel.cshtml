@@ -1,17 +1,10 @@
-﻿
-@{
-    Layout = null;
-}
+﻿@model  Lab4.Models.Blog.BlogPostModel
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>BlogPostModel</title>
-</head>
-<body>
-    <div> 
-    </div>
-</body>
-</html>
+Title<br />
+@Html.EditorFor(m => Model.Title)<br />
+Content <br />
+@Html.EditorFor(m => Model.Content) <br />
+Author <br />
+@Html.EditorFor(m => Model.Author)
+

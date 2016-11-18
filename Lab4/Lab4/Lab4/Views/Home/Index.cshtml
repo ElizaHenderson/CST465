@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Lab4.Code.DataObjects.BlogPost>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Home";
@@ -9,5 +9,6 @@
 
 <img src="https://s-media-cache-ak0.pinimg.com/originals/39/07/78/390778e2526be7ee9c6b373f8f4e91fd.jpg" /><br/>
 
+@Html.Partial("~/Views/Shared/_BlogPostLinkList.cshtml", Model)
 small peice of content? 
-
+<br /><br /><br /><br /><br />
