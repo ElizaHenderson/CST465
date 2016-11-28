@@ -1,4 +1,5 @@
 ﻿using Lab4.Code.DataObjects;
+using Lab4.Models.Blog;
 using Lab4.Code.Repositories;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,7 @@ namespace Lab4.Controllers
                 return View(model);
 
         }
+
         public ActionResult Edit(int id)
         {
             BlogPost post = new BlogPost();
@@ -71,12 +73,11 @@ namespace Lab4.Controllers
 
         }
 
-        public ActionResult ViewSingleBlog(BlogPostModel model)
+        public ActionResult ViewSingle(int id)
         {
             var blogPost = new BlogPost();
-            blogPost = _thing.Get(model.ID);
+            blogPost = _thing.Get(id);
             return View(blogPost);
-
         }
         public BlogController ()
         {

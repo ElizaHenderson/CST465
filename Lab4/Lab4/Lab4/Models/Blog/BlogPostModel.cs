@@ -3,21 +3,25 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-public class BlogPostModel
+namespace Lab4.Models.Blog
 {
-    [HiddenInput(DisplayValue = false)]
-    
-    public int ID { get; set; }
+    public class BlogPostModel
+    {
+        [HiddenInput(DisplayValue = false)]
 
-    [Required]
-    [StringLength(200)]
-    public string Title { get; set; }
+        public int ID { get; set; }
 
-    [Required]
-    [DataType(DataType.MultilineText)]
-    public string Content { get; set; }
+        [Required]
+        [StringLength(200)]
+        [DisplayName("My Cool Title")]
+        public string Title { get; set; }
 
-    [Required]
-    public string Author { get; set; }
-    public object ModelState { get; internal set; }
+        [Required]
+        [DataType(DataType.MultilineText)]
+        public string Content { get; set; }
+
+        [Required]
+        public string Author { get; set; }
+        public object ModelState { get; internal set; }
+    }
 }
