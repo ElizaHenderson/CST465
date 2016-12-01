@@ -72,7 +72,7 @@ namespace Lab4.Controllers
         }
         public CategoriesController()
         {
-            _thing = new CategoriesDBRepository();
+            //_thing = new CategoriesDBRepository();
         }
 
     }

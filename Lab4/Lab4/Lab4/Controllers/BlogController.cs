@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Lab4.Code.ExtensionMethods;
 
 namespace Lab4.Controllers
 {
@@ -17,7 +18,11 @@ namespace Lab4.Controllers
         {
             return View(_thing.GetList());
         }
-
+        [HttpPost]
+        public ActionResult Index(string filter)
+        {
+            return View(_thing.GetListByContent(filter));
+        }
         public ActionResult Add()
         {
             BlogPostModel _obj = new BlogPostModel();
@@ -69,8 +74,6 @@ namespace Lab4.Controllers
             }
             else
                 return View(model);
-            
-
         }
 
         public ActionResult ViewSingle(int id)
@@ -83,7 +86,11 @@ namespace Lab4.Controllers
         {
             _thing = new BlogDBRepository();
         }
+        public BlogController(IDataEntityRepository<BlogPost> bob)
+        {
+            _thing = bob;
+        }
+
         
     }
-    
 }

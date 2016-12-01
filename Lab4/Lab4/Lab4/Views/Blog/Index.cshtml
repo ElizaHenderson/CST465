@@ -4,7 +4,13 @@
     ViewBag.Title = "Add a New Blog Post";
 }
 <h1>Index</h1>
-
+@using (Html.BeginForm())
+{
+    <div>
+        <input type="text" name="filter" />
+        <input type="submit" name="Submit" placeholder="Filter" />
+    </div>
+}
 @foreach (var post in Model)
 {
     <div>
@@ -14,7 +20,7 @@
         Content: @post.Content<br/>
         Timestamp: @post.Timestamp<br/>
 
-        @Html.ActionLink("Edit Post", "Edit", new {ID=post.ID })
+        @Html.ActionLink("Edit Post", "Edit", new { ID = post.ID })
     </div>
     <br/> 
 }
