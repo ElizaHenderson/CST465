@@ -17,12 +17,14 @@ namespace Lab4.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        
 
         public AccountController()
         {
+            
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -34,9 +36,9 @@ namespace Lab4.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -72,7 +74,17 @@ namespace Lab4.Controllers
             {
                 return View(model);
             }
-
+            //var user = await UserManager.FindByNameAsync(model.Email);
+            //if(user == null)
+            //{
+            //    ModelState.AddModelError("", "Invalid login attempt.");
+            //    return View(model);
+            //}
+            //if (!user.EmailConfirmed)
+            //{
+            //    TempData["Email"] = model.Email;
+            //    return RedirectToAction("ResendConfirmationEmail");
+            //}
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
@@ -90,7 +102,31 @@ namespace Lab4.Controllers
                     return View(model);
             }
         }
+        [AllowAnonymous]
+        public ActionResult ResendConfirmationEmail()
+        {
+            string email = (string)TempData["Email"];
+            if(!string.IsNullOrEmpty(email))
+            { 
+                return View((object)email);
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ResendConfirmationEmail(string Email)
+        {
+            var user = UserManager.FindByEmail(Email);
+            string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+            await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
+            return View("AwaitingConfirmation");
+        }
         //
         // GET: /Account/VerifyCode
         [AllowAnonymous]
@@ -120,7 +156,7 @@ namespace Lab4.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -151,19 +187,19 @@ namespace Lab4.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, BirthDate = model.BirthDate };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    return Redirect("/");
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    //string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    //return View("AwaitingConfirmation");
                 }
                 AddErrors(result);
             }
@@ -384,15 +420,46 @@ namespace Lab4.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
+        //[HttpPost]
+        //[Authorize]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult JoinRole(string RoleName)
+        //{
 
+        //    UserManager.AddToRole(User.Identity.GetUserId(), RoleName);
+
+        //    return RedirectToAction("Roles");
+
+
+        //}
+        //[HttpGet]
+        //[Authorize]
+        //public ActionResult Roles()
+        //{
+        //    List<string> roleNames = RoleManager.Roles.Select(role => role.Name).ToList();
+        //    return View(roleNames);
+        //}
+        //[HttpPost]
+        //[Authorize]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Roles(string RoleName)
+        //{
+        //    var role = new ApplicationRole();
+        //    role.Id = Guid.NewGuid().ToString();
+        //    role.Name = RoleName;
+        //    RoleManager.Create(role);
+
+        //    return RedirectToAction("Roles");
+
+        //}
         //
-        // POST: /Account/LogOff
+        //POST: /Account/LogOff
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Intro");
         }
 
         //
@@ -449,7 +516,7 @@ namespace Lab4.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Intro");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

@@ -209,10 +209,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Account\AccountViewModels.cs" />
+    <Compile Include="Models\Account\ForgotPasswordViewModel.cs" />
+    <Compile Include="Models\Account\LoginViewModel.cs" />
+    <Compile Include="Models\Account\RegisterViewModel.cs" />
+    <Compile Include="Models\Account\ResetPasswordViewModel.cs" />
     <Compile Include="Models\Blog\BlogPostModel.cs" />
     <Compile Include="Models\Categories\CategoriesModel.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Identity\ApplicationDBContext.cs" />
+    <Compile Include="Models\Identity\ApplicationRole.cs" />
+    <Compile Include="Models\Identity\ApplicationUser.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MidTerm\LongAnswerQuestion.cs" />
     <Compile Include="Models\MidTerm\MultipleChoiceQuestion.cs" />
@@ -233,6 +239,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="JSON\midterm.json" />
     <Content Include="App_Data\Data.json" />
+    <Content Include="ConnectionStrings.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -297,6 +304,7 @@
     <Content Include="Views\Midterm\EditorTemplates\LongAnswerQuestion.cshtml" />
     <Content Include="Views\Midterm\EditorTemplates\MultipleChoiceQuestion.cshtml" />
     <Content Include="Views\Shared\_BlogPostLinkList.cshtml" />
+    <Content Include="Smtp.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="img\" />
