@@ -16,6 +16,23 @@
         @RenderSection("header", required: false)
         Suckerity.com <br />
         A sucker is born every minute, don't be one of them.<br />
+        @{
+            if(User.Identity.IsAuthenticated)
+            {
+                <div>
+                    Welcome @User.Identity.Name;
+                </div>
+                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { @id = "logoutForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <a href="Logout" onclick="document.getElementById('logoutForm').submit(); return false;">Logout</a>
+                }
+            }
+            else
+            {
+                @Html.ActionLink("Login", "Login", "Account");
+            }
+        } 
     </header>
     
     <nav>
