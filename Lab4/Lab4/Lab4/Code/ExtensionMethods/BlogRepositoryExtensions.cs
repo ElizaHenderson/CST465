@@ -10,8 +10,7 @@ namespace Lab4.Code.ExtensionMethods
     {
         public static List<BlogPost> GetListByContent(this IDataEntityRepository<BlogPost> bob, string steve)
         {
-            List<BlogPost> jerry = new List<BlogPost>();
-            jerry = bob.GetList();
+            List<BlogPost> jerry = bob.GetList();
             jerry = jerry.Where(m => m.Content.Contains(steve) || m.Title.Contains(steve)).ToList();
             return jerry;
         }

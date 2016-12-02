@@ -27,6 +27,14 @@ namespace Lab4.Models
         [DataType(DataType.DateTime)]
         public DateTime BirthDate { get; set; }
 
+        [Required]
+        [StringLength(100, ErrorMessage = "Required")]
+        public string FirstName { get; set; }
+        [Required]
+        [StringLength(100, ErrorMessage = "Required")]
+        public string LastName { get; set; }
+        [Required]
+        public int Age { get; set; }
 
     }
 }

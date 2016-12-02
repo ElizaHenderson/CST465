@@ -46,7 +46,7 @@ namespace Lab4.Controllers
                 return View(model);
 
         }
-
+        [Authorize]
         public ActionResult Edit(int id)
         {
             BlogPost post = new BlogPost();
@@ -60,6 +60,7 @@ namespace Lab4.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Edit(BlogPostModel model)
         {
             if (ModelState.IsValid)

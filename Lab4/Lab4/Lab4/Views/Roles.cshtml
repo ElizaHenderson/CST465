@@ -1,0 +1,29 @@
+﻿@model List<string>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Roles</title>
+</head>
+<body>
+    <div> 
+        @foreach (string var in Model)
+        {
+            var.ToString();
+        }
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div>
+                <input type="text" name="RoleName" />
+                <input type="submit" name="Submit" placeholder="Add Role" />
+            </div>
+        }
+    </div>
+</body>
+</html>
