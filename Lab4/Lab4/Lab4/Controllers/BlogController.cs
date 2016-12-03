@@ -10,6 +10,7 @@ using Lab4.Code.ExtensionMethods;
 
 namespace Lab4.Controllers
 {
+    //[Authorize]
     public class BlogController : Controller
     {
         private IDataEntityRepository<BlogPost> _thing;

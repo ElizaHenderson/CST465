@@ -305,7 +305,7 @@
     <Content Include="Views\Midterm\EditorTemplates\MultipleChoiceQuestion.cshtml" />
     <Content Include="Views\Shared\_BlogPostLinkList.cshtml" />
     <Content Include="Smtp.config" />
-    <Content Include="Views\Roles.cshtml" />
+    <Content Include="Views\Account\Roles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="img\" />

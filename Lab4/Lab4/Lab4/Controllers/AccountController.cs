@@ -17,29 +17,30 @@ namespace Lab4.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private ApplicationRoleManager _stuff;
+        private ApplicationRoleManager _accountManager;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         
 
-        public AccountController(ApplicationRoleManager thing)
+        public AccountController()
         {
-            //_stuff = thing;
+           
         }
         public ApplicationRoleManager RoleManager
         {
             get
             {
-                return _stuff ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+                return _accountManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
                     //GetRoleManager<ApplicationRoleManager>();
             }
             private set
             {
-                _stuff = value;
+                _accountManager = value;
             }
         }
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager whatever)
         {
+            RoleManager = whatever;
             UserManager = userManager;
             SignInManager = signInManager;
         }

@@ -1,0 +1,30 @@
+﻿@model List<string>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+@foreach (string var in Model)
+{
+    <div>
+        @var
+    </div>
+}
+<h2>Add Role?</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        @Html.TextBox("RoleName")
+        <input type="submit" name="Add" placeholder="Add Role" />
+    </div>
+}
+<h2>Join Role?</h2>
+@using (Html.BeginForm("JoinRole", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div>
+        @Html.TextBox("RoleName")
+        <input type="submit" name="Join" placeholder="Join Role" value="Add Role" />
+    </div>
+}
+

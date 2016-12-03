@@ -22,12 +22,13 @@ namespace Lab4
 
             // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<IDataEntityRepository<BlogPost>, BlogDBRepository2>();
-            DependencyResolver.SetResolver(new UnityDependencyResolver(container));
+            
             container.RegisterType<DbContext, ApplicationDbContext>(new HierarchicalLifetimeManager());
             container.RegisterType<UserManager<ApplicationUser>>(new HierarchicalLifetimeManager());
             container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(new HierarchicalLifetimeManager());
             container.RegisterType<IRoleStore<ApplicationRole, string>, RoleStore<ApplicationRole>>(new HierarchicalLifetimeManager());
             container.RegisterType<AccountController>(new InjectionConstructor());
+            DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }
 }
