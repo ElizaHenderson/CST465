@@ -9,10 +9,19 @@ using System.Web.Mvc;
 
 namespace Lab4.Controllers
 {
-    public class CategoriesController : Controller
+    [Authorize]
+    public class CategoryController : Controller
     {
-        private IDataEntityRepository<Categories> _thing;
+        private IDataEntityRepository<Category> _thing;
         // GET: Categories
+        //public CategoryController()
+        //{
+        //    _thing = new CategoryDBRepository();
+        //}
+        public CategoryController(IDataEntityRepository<Category> steve)
+        {
+            _thing = steve;
+        }
         public ActionResult Index()
         {
             return View(_thing.GetList());
@@ -20,59 +29,46 @@ namespace Lab4.Controllers
 
         public ActionResult Add()
         {
-            CategoriesModel _obj = new CategoriesModel();
+            CategoryModel _obj = new CategoryModel();
             return View(_obj);
         }
 
         [HttpPost]
-        public ActionResult Add(CategoriesModel model)
+        public ActionResult AddCategory(CategoryModel model)
         {
             if (ModelState.IsValid)
             {
-                Categories post = new Categories();
+                Category post = new Category();
                 post.CategoryName = model.CategoryName;
                 _thing.Save(post);
                 return RedirectToAction("Index");
             }
             else
                 return View(model);
-
         }
+        
         public ActionResult Edit(int id)
         {
-            Categories post = new Categories();
-            CategoriesModel model = new CategoriesModel();
+            Category post = new Category();
+            CategoryModel model = new CategoryModel();
             post = _thing.Get(id);
             model.CategoryName = post.CategoryName;
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Edit(CategoriesModel model)
+        [Authorize]
+        public ActionResult Edit(CategoryModel model)
         {
             if (ModelState.IsValid)
             {
-                Categories post = new Categories();
+                Category post = new Category();
                 post.CategoryName = model.CategoryName;
                 _thing.Save(post);
                 return RedirectToAction("Index");
             }
             else
                 return View(model);
-
-
-        }
-
-        public ActionResult ViewSingleBlog(CategoriesModel model)
-        {
-            var blogPost = new Categories();
-            blogPost = _thing.Get(model.ID);
-            return View(blogPost);
-
-        }
-        public CategoriesController()
-        {
-            //_thing = new CategoriesDBRepository();
         }
 
     }

@@ -84,10 +84,12 @@ namespace Lab4.Controllers
             blogPost = _thing.Get(id);
             return View(blogPost);
         }
+
         public BlogController ()
         {
             _thing = new BlogDBRepository();
         }
+
         public BlogController(IDataEntityRepository<BlogPost> bob)
         {
             _thing = bob;

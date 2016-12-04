@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Lab4.Code.DataObjects
 {
-    public class Categories : IDataEntity
+    public class Category : IDataEntity
     {
         public int ID { get; set; }
         public string CategoryName { get; set; }

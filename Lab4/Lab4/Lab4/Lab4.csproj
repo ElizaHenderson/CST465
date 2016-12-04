@@ -189,18 +189,18 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Code\DataObjects\BlogPost.cs" />
-    <Compile Include="Code\DataObjects\Categories.cs" />
+    <Compile Include="Code\DataObjects\Category.cs" />
     <Compile Include="Code\DataObjects\Products.cs" />
     <Compile Include="Code\ExtensionMethods\BlogRepositoryExtensions.cs" />
     <Compile Include="Code\Interfaces\IDataEntity.cs" />
     <Compile Include="Code\Interfaces\IDataEntityRepository.cs" />
     <Compile Include="Code\Repositories\BlogDBRepository.cs" />
-    <Compile Include="Code\Repositories\CategoriesDBRepository.cs" />
+    <Compile Include="Code\Repositories\CategoryDBRepository.cs" />
     <Compile Include="Code\Repositories\BlogDBRepository2.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
-    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -215,7 +215,7 @@
     <Compile Include="Models\Account\RegisterViewModel.cs" />
     <Compile Include="Models\Account\ResetPasswordViewModel.cs" />
     <Compile Include="Models\Blog\BlogPostModel.cs" />
-    <Compile Include="Models\Categories\CategoriesModel.cs" />
+    <Compile Include="Models\Categories\CategoryModel.cs" />
     <Compile Include="Models\Identity\ApplicationDBContext.cs" />
     <Compile Include="Models\Identity\ApplicationRole.cs" />
     <Compile Include="Models\Identity\ApplicationUser.cs" />
@@ -306,10 +306,10 @@
     <Content Include="Views\Shared\_BlogPostLinkList.cshtml" />
     <Content Include="Smtp.config" />
     <Content Include="Views\Account\Roles.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="img\" />
-    <Folder Include="Views\Categories\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Lab4.Models.Categories
 {
-    public class CategoriesModel
+    public class CategoryModel
     {
         [HiddenInput(DisplayValue = false)]
 

@@ -8,17 +8,17 @@ using System.Web;
 
 namespace Lab4.Code.Repositories
 {
-    public class CategoriesDBRepository
+    public class CategoryDBRepository : IDataEntityRepository<Category>
     {
-        public Categories Get(int id)
+        public Category Get(int id)
         {
-            Categories item = new Categories();
+            Category item = new Category();
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Aura"].ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = "SELECT * FROM Categories WHERE ID=@ID";
+                    command.CommandText = "SELECT * FROM Category WHERE ID=@ID";
                     command.Parameters.AddWithValue("@ID", id);
                     command.Connection.Open();
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -34,21 +34,21 @@ namespace Lab4.Code.Repositories
             return item;
         }
 
-        public List<Categories> GetList()
+        public List<Category> GetList()
         {
-            List<Categories> items = new List<Categories>();
+            List<Category> items = new List<Category>();
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Aura"].ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = "SELECT * FROM Categories";
+                    command.CommandText = "SELECT * FROM Category";
                     command.Connection.Open();
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            Categories item = new Categories();
+                            Category item = new Category();
                             item.ID = (int)reader["ID"];
                             item.CategoryName = reader["CategoryName"].ToString();
                             items.Add(item);
@@ -59,7 +59,7 @@ namespace Lab4.Code.Repositories
             return items;
         }
 
-        public void Save(Categories entity)
+        public void Save(Category entity)
         {
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Aura"].ConnectionString))
             {
@@ -68,11 +68,11 @@ namespace Lab4.Code.Repositories
                     command.Connection = connection;
                     if (entity.ID == 0)
                     {
-                        command.CommandText = "INSERT INTO Categories(CategoryName) VALUES(@Name)";
+                        command.CommandText = "INSERT INTO Category(CategoryName) VALUES(@Name)";
                     }
                     else
                     {
-                        command.CommandText = "UPDATE Categories SET CategoryName=@Name WHERE ID=@ID";
+                        command.CommandText = "UPDATE Category SET CategoryName=@Name WHERE ID=@ID";
                         command.Parameters.AddWithValue("@ID", entity.ID);
                     }
                     command.Parameters.AddWithValue("@Name", entity.CategoryName);
