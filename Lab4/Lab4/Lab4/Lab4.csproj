@@ -198,7 +198,6 @@
     <Compile Include="Code\Repositories\CategoryDBRepository.cs" />
     <Compile Include="Code\Repositories\BlogDBRepository2.cs" />
     <Compile Include="Code\Repositories\InventoryDBRepository.cs" />
-    <Compile Include="Code\Repositories\MemoryStread.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
@@ -218,7 +217,7 @@
     <Compile Include="Models\Account\RegisterViewModel.cs" />
     <Compile Include="Models\Account\ResetPasswordViewModel.cs" />
     <Compile Include="Models\Blog\BlogPostModel.cs" />
-    <Compile Include="Models\Categories\CategoryModel.cs" />
+    <Compile Include="Models\Inventory\CategoryModel.cs" />
     <Compile Include="Models\Identity\ApplicationDBContext.cs" />
     <Compile Include="Models\Identity\ApplicationRole.cs" />
     <Compile Include="Models\Identity\ApplicationUser.cs" />

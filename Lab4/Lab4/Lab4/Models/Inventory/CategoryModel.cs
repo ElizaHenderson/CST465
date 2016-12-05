@@ -10,7 +10,6 @@ namespace Lab4.Models.Categories
     public class CategoryModel
     {
         [HiddenInput(DisplayValue = false)]
-
         public int ID { get; set; }
 
         [Required]
