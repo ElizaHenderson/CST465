@@ -68,14 +68,14 @@ namespace Lab4.Code.Repositories
                     command.Connection = connection;
                     if (entity.ID == 0)
                     {
-                        command.CommandText = "INSERT INTO Category(CategoryName) VALUES(@Name)";
+                        command.CommandText = "INSERT INTO Category(CategoryName) VALUES(@CategoryName)";
                     }
                     else
                     {
-                        command.CommandText = "UPDATE Category SET CategoryName=@Name WHERE ID=@ID";
+                        command.CommandText = "UPDATE Category SET CategoryName=@CategoryName WHERE ID=@ID";
                         command.Parameters.AddWithValue("@ID", entity.ID);
                     }
-                    command.Parameters.AddWithValue("@Name", entity.CategoryName);
+                    command.Parameters.AddWithValue("@CategoryName", entity.CategoryName);
                     command.Connection.Open();
                     command.ExecuteNonQuery();
                 }

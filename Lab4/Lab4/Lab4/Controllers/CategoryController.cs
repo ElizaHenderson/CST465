@@ -13,11 +13,7 @@ namespace Lab4.Controllers
     public class CategoryController : Controller
     {
         private IDataEntityRepository<Category> _thing;
-        // GET: Categories
-        //public CategoryController()
-        //{
-        //    _thing = new CategoryDBRepository();
-        //}
+
         public CategoryController(IDataEntityRepository<Category> steve)
         {
             _thing = steve;
@@ -34,37 +30,25 @@ namespace Lab4.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddCategory(CategoryModel model)
+        public ActionResult AddCategory(string CategoryName)
         {
             if (ModelState.IsValid)
             {
                 Category post = new Category();
-                post.CategoryName = model.CategoryName;
+                post.CategoryName = CategoryName;
                 _thing.Save(post);
                 return RedirectToAction("Index");
             }
             else
-                return View(model);
-        }
-        
-        public ActionResult Edit(int id)
-        {
-            Category post = new Category();
-            CategoryModel model = new CategoryModel();
-            post = _thing.Get(id);
-            model.CategoryName = post.CategoryName;
-            return View(model);
+                return View(CategoryName);
         }
 
-        [HttpPost]
         [Authorize]
-        public ActionResult Edit(CategoryModel model)
+        public ActionResult Edit(Category model)
         {
             if (ModelState.IsValid)
             {
-                Category post = new Category();
-                post.CategoryName = model.CategoryName;
-                _thing.Save(post);
+                _thing.Save(model);
                 return RedirectToAction("Index");
             }
             else

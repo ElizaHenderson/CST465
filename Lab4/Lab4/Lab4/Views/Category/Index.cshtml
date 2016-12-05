@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Lab4.Code.DataObjects.Category>
+﻿@using Lab4.Code.DataObjects
+@model List<Category>
 @{
     ViewBag.Title = "Category Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,25 +8,23 @@
 <h2>Category Index</h2>
 
 @{
-    var dropdown = new SelectList(Model);
-    using (Html.BeginForm("Delete", "Category", FormMethod.Post))
+    foreach (Category thing in Model)
     {
-        @Html.DropDownList("Categories", dropdown);
+            using (Html.BeginForm("Edit", "Category", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(Model => Model.Find(c => c == thing).ID);
+                @Html.EditorFor(Model => Model.Find(c => c == thing).CategoryName);
 
-        <input type="submit" value="Delete" class="btn btn-default" />
+                <input type="submit" value="Edit Category" />
+                <input type="button" value="Delete Category" onclick="location.href='@Url.Action("Delete", Model.Find(c => c == thing))'" />
+            }
     }
-
-    using (Html.BeginForm("Edit", "Category", FormMethod.Post))
-    {
-        @Html.DropDownList("Categories", dropdown);
-
-        <input type="submit" value="Edit" class="btn btn-default" />
-    }
-
+    <br />
     using (Html.BeginForm("AddCategory", "Category", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
-        @Html.TextBox("Category")
+        @Html.TextBox("CategoryName")
         <input type="submit" value="Add Category" class="btn btn-success" />
     }
 }

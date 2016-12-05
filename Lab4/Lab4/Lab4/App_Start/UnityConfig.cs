@@ -28,7 +28,7 @@ namespace Lab4
             container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(new HierarchicalLifetimeManager());
             container.RegisterType<IRoleStore<ApplicationRole, string>, RoleStore<ApplicationRole>>(new HierarchicalLifetimeManager());
             container.RegisterType<IDataEntityRepository<Category>, CategoryDBRepository>();
-            //RegisterType.container<IDataEntityRepository<Inventory>, InventoryDBRepository>();
+            container.RegisterType<IDataEntityRepository<Inventory>, InventoryDBRepository>();
             container.RegisterType<AccountController>(new InjectionConstructor());
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

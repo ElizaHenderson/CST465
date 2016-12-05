@@ -190,13 +190,15 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Code\DataObjects\BlogPost.cs" />
     <Compile Include="Code\DataObjects\Category.cs" />
-    <Compile Include="Code\DataObjects\Products.cs" />
+    <Compile Include="Code\DataObjects\Inventory.cs" />
     <Compile Include="Code\ExtensionMethods\BlogRepositoryExtensions.cs" />
     <Compile Include="Code\Interfaces\IDataEntity.cs" />
     <Compile Include="Code\Interfaces\IDataEntityRepository.cs" />
     <Compile Include="Code\Repositories\BlogDBRepository.cs" />
     <Compile Include="Code\Repositories\CategoryDBRepository.cs" />
     <Compile Include="Code\Repositories\BlogDBRepository2.cs" />
+    <Compile Include="Code\Repositories\InventoryDBRepository.cs" />
+    <Compile Include="Code\Repositories\MemoryStread.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
@@ -204,6 +206,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MidTerm\MidtermController.cs" />
     <Compile Include="Global.asax.cs">
@@ -307,6 +310,10 @@
     <Content Include="Smtp.config" />
     <Content Include="Views\Account\Roles.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Inventory\Add.cshtml" />
+    <Content Include="Views\Inventory\Edit.cshtml" />
+    <Content Include="Views\Inventory\Index.cshtml" />
+    <Content Include="Views\Inventory\EditorTemplates\Inventory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="img\" />
