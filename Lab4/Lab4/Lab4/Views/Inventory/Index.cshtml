@@ -1,8 +1,32 @@
-﻿@model IEnumerable<Lab4.Code.DataObjects.Inventory>
+﻿@using Lab4.Code.DataObjects
+@model List<Inventory>
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
-
+@foreach (Inventory thing in Model)
+{ 
+    <h2>@Html.Raw(thing.ProductName)</h2>
+    if (thing.FileName != null)
+    {
+        string thingy = "data:" + thing.ImageType + ";base64," + Convert.ToBase64String(thing.ProductImage);
+        <img class="thumbnail" src='@thingy' alt="@thing.FileName" style="width: 5em; height:5em" />
+    }
+    <br />
+    @Html.Raw("Product Code:"+ @thing.ProductCode) <br />
+    @Html.Raw("Description: " + thing.ProductDescription)<br />
+    @Html.Raw("Price: " + thing.Price) <br />
+    @Html.Raw("Quantity: "+thing.Quantity)<br />
+    if (User.Identity.IsAuthenticated)
+    {
+        <input type="button" value="Edit Product" onclick="location.href='@Url.Action("Edit", "Inventory", new { id = @thing.ID })'" />
+        <input type="button" value="Delete Product" onclick="location.href='@Url.Action("Delete", "Inventory", new { id = @thing.ID })'" />
+    }
+}
+<br/>
+@if (User.Identity.IsAuthenticated)
+{
+    @Html.ActionLink("Add new product", "Add")
+}

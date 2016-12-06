@@ -221,6 +221,7 @@
     <Compile Include="Models\Identity\ApplicationDBContext.cs" />
     <Compile Include="Models\Identity\ApplicationRole.cs" />
     <Compile Include="Models\Identity\ApplicationUser.cs" />
+    <Compile Include="Models\Inventory\InventoryModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MidTerm\LongAnswerQuestion.cs" />
     <Compile Include="Models\MidTerm\MultipleChoiceQuestion.cs" />
@@ -312,7 +313,6 @@
     <Content Include="Views\Inventory\Add.cshtml" />
     <Content Include="Views\Inventory\Edit.cshtml" />
     <Content Include="Views\Inventory\Index.cshtml" />
-    <Content Include="Views\Inventory\EditorTemplates\Inventory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="img\" />

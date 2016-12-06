@@ -20,7 +20,7 @@ namespace Lab4.Code.Repositories
                 using (SqlCommand command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = "SELECT * FROM Inventory WHERE ID=@ID";
+                    command.CommandText = "SELECT * FROM Product WHERE ID=@ID";
                     command.Parameters.AddWithValue("@ID", id);
                     command.Connection.Open();
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -28,20 +28,16 @@ namespace Lab4.Code.Repositories
                         if (reader.Read())
                         {
                             item.ID = (int)reader["ID"];
-                            item.ProductName = reader["Inventory"].ToString();
+                            item.ProductName = reader["ProductName"].ToString();
                             item.ProductCode = reader["ProductCode"].ToString();
                             item.CategoryID = (int)reader["CategoryID"];
+                            item.Quantity = (int)reader["Quantity"];
+                            item.Price = (decimal)reader["Price"];
                             item.ProductDescription = reader["ProductDescription"].ToString();
-                            item.ImageFileName = reader["ImageFileName"].ToString();
-                            item.ImageContentType = reader["ImageContentType"].ToString();
-                            object image = reader["ProductImage"];
-                            BinaryFormatter bin = new BinaryFormatter();
-                            using (MemoryStream mem = new MemoryStream())
-                            {
-                                bin.Serialize(mem, image);
-                                item.ProductImage = mem.ToArray();
-                            }
-                       }
+                            item.FileName = reader["ImageName"].ToString();
+                            item.ImageType = reader["ImageType"].ToString();
+                            item.ProductImage = (byte[])reader["ProductImage"];
+                        }
                     }
                 }
             }
@@ -64,12 +60,14 @@ namespace Lab4.Code.Repositories
                         {
                             Inventory item = new Inventory();
                             item.ID = (int)reader["ID"];
-                            item.ProductName = reader["Inventory"].ToString();
+                            item.ProductName = reader["ProductName"].ToString();
                             item.ProductCode = reader["ProductCode"].ToString();
                             item.CategoryID = (int)reader["CategoryID"];
+                            item.Quantity = (int)reader["Quantity"];
+                            item.Price = (decimal)reader["Price"];
                             item.ProductDescription = reader["ProductDescription"].ToString();
-                            item.ImageFileName = reader["ImageFileName"].ToString();
-                            item.ImageContentType = reader["ImageContentType"].ToString();
+                            item.FileName = reader["ImageName"].ToString();
+                            item.ImageType = reader["ImageType"].ToString();
                             item.ProductImage = (byte[])reader["ProductImage"];
                             items.Add(item);
                         }
@@ -101,19 +99,31 @@ namespace Lab4.Code.Repositories
                     command.Connection = connection;
                     if (entity.ID == 0)
                     {
-                        command.CommandText = "INSERT INTO Inventory(ProductCode,ProductName,CategoryID,ProductDescription,ProductImage,Price,Quantity) VALUES(@ProductCode,@ProductName,@CategoryID,@ProductDescription,@ProductImage,@Price)";
+                        command.CommandText = "INSERT INTO Product(ProductCode,ProductName,CategoryID,ProductDescription,ProductImage,Price,Quantity, ImageName,ImageType) VALUES(@ProductCode,@ProductName,@CategoryID,@ProductDescription,@ProductImage,@Price,@Quantity,@ImageName,@ImageType)";
                     }
                     else
                     {
-                        command.CommandText = "UPDATE Inventory SET ProductName=@InventoryName WHERE ID=@ID";
+                        command.CommandText = "UPDATE Product SET ProductCode=@ProductCode, ProductName=@ProductName, ImageName=@ImageName, ImageType=@ImageType, CategoryID=@CategoryID, ProductDescription=@ProductDescription, ProductImage=@ProductImage, Price=@Price, Quantity=@Quantity WHERE ID=@ID";
                         command.Parameters.AddWithValue("@ID", entity.ID);
                     }
                     command.Parameters.AddWithValue("@ProductName", entity.ProductName);
                     command.Parameters.AddWithValue("@ProductCode", entity.ProductCode);
                     command.Parameters.AddWithValue("@CategoryID", entity.CategoryID);
                     command.Parameters.AddWithValue("@ProductDescription", entity.ProductDescription);
-                    command.Parameters.AddWithValue("@ProductImage", entity.ProductImage);
+                    command.Parameters.AddWithValue("@Quantity", entity.Quantity);
                     command.Parameters.AddWithValue("@Price", entity.Price);
+                    if (entity.FileName == null)
+                    {
+                        command.Parameters.AddWithValue("@ProductImage", 0);
+                        command.Parameters.AddWithValue("@ImageType", "null");
+                        command.Parameters.AddWithValue("@ImageName", "null");
+                    }
+                    else
+                    {
+                        command.Parameters.AddWithValue("@ProductImage", entity.ProductImage);
+                        command.Parameters.AddWithValue("@ImageType", entity.ImageType);
+                        command.Parameters.AddWithValue("@ImageName", entity.FileName);
+                    }
                     command.Connection.Open();
                     command.ExecuteNonQuery();
                 }

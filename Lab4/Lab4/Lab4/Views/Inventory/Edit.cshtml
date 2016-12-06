@@ -1,7 +1,34 @@
-﻿
+﻿@using Lab4.Code.DataObjects
+@using Lab4.Code.Repositories
+@model Inventory
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h1>Edit</h1>
+<br />
+@using (Html.BeginForm("Edit", "Inventory", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.LabelFor(model => model.ProductName) <br />
+    @Html.TextBoxFor(model => model.ProductName)<br />
 
+    @Html.LabelFor(model => model.ProductCode)<br />
+    @Html.TextBoxFor(model => model.ProductCode)<br />
+
+    @Html.LabelFor(model => model.ProductDescription)<br />
+    @Html.TextAreaFor(model => model.ProductDescription)<br />
+
+    @Html.LabelFor(model => model.Price)<br />
+    @Html.TextBoxFor(model => model.Price)<br />
+
+    @Html.LabelFor(model => model.Quantity)<br />
+    @Html.TextBoxFor(model => model.Quantity)<br />
+
+    @Html.LabelFor(model => model.CategoryID)<br />
+    @Html.DropDownListFor(model => model.CategoryID, new SelectList(new CategoryDBRepository().GetList(), "ID", "CategoryName")) <br />
+
+    @Html.LabelFor(model => model.ProductImage)<br />
+    <input type="file" name="ProductImage" /> <br />
+    <input type="submit" value="Edit Inventory Item" class="btn btn-success" />
+}

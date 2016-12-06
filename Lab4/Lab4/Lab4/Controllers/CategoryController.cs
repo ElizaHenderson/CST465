@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Lab4.Controllers
 {
-    [Authorize]
+    
     public class CategoryController : Controller
     {
         private IDataEntityRepository<Category> _thing;
@@ -30,6 +30,8 @@ namespace Lab4.Controllers
         }
 
         [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult AddCategory(string CategoryName)
         {
             if (ModelState.IsValid)
@@ -44,6 +46,7 @@ namespace Lab4.Controllers
         }
 
         [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Category model)
         {
             if (ModelState.IsValid)
