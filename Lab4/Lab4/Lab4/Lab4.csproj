@@ -217,6 +217,7 @@
     <Compile Include="Models\Account\RegisterViewModel.cs" />
     <Compile Include="Models\Account\ResetPasswordViewModel.cs" />
     <Compile Include="Models\Blog\BlogPostModel.cs" />
+    <Compile Include="Models\Contact\ContactModel.cs" />
     <Compile Include="Models\Inventory\CategoryModel.cs" />
     <Compile Include="Models\Identity\ApplicationDBContext.cs" />
     <Compile Include="Models\Identity\ApplicationRole.cs" />
@@ -313,6 +314,8 @@
     <Content Include="Views\Inventory\Add.cshtml" />
     <Content Include="Views\Inventory\Edit.cshtml" />
     <Content Include="Views\Inventory\Index.cshtml" />
+    <Content Include="Views\Shared\_InventoryList.cshtml" />
+    <Content Include="Views\Contact\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="img\" />

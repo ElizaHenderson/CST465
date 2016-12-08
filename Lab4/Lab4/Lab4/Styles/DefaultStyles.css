@@ -71,9 +71,10 @@ img{
     position: absolute;
     width: 80%;
     left: 18%;
-    background-color: #85648F;
+    background-color: #525252;
+    padding-bottom: 25px;
   }
   html{
-      background-color: #150F38;
+      background-color: #040019;
   }
 }

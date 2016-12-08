@@ -13,9 +13,10 @@
 </head>
 <body>
     <header>
+        <img src="https://www.healthit.gov/sites/default/files/Security_Shield_Lock.png" style="width: 4em; height:4em" />
+        Suckerity.com -- A sucker is born every minute, don't be one of them
         @RenderSection("header", required: false)
-        Suckerity.com <br />
-        A sucker is born every minute, don't be one of them.<br />
+        
         @{
             if(User.Identity.IsAuthenticated)
             {
@@ -40,6 +41,8 @@
             <li> @Html.ActionLink("Home", "Index", "Home") </li>
             <li> @Html.ActionLink("About", "Index", "About") </li>
             <li> @Html.ActionLink("Contact", "Index", "Contact")</li>
+            <li> @Html.ActionLink("Blog", "Index", "Blog")</li>
+            <li> @Html.ActionLink("Inventory", "Index", "Inventory")</li>
         </ul>
     </nav>
     

@@ -1,9 +1,33 @@
-﻿
-@{
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Contact";
-
 }
 
-@section header{<h1>Contact the Hackerman</h1>}
+@section header{<h1>Contact</h1>}
+Address: <br/>
+Suckerity LLC<br />
+325 S. Santa Claus Lane<br />
+North Pole, Alaska 99705<br />
+Phone Number: 555-123-4949<br />
+<br/>
+@using (@Html.BeginForm("Index", "Contact", FormMethod.Post))
+{
+    @Html.Raw("Name:");
+    <br />
+    @Html.TextBox("Name");
+    <br/>
+    @Html.Raw("Email:");
+    <br />
+    @Html.TextBox("Email");
+    <br />
+    @Html.Raw("Phone Number:");
+    <br />
+    @Html.TextBox("PhoneNumber");
+    <br />
+    @Html.Raw("Comment:");
+    <br/>
+    @Html.TextArea("Comment");
+    <br />
+    <button type="submit">Submit</button>
+}
 @section footer { &copy Eliza Henderson forever }

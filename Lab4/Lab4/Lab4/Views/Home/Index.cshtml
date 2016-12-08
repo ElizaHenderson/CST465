@@ -1,14 +1,15 @@
-﻿@model IEnumerable<Lab4.Code.DataObjects.BlogPost>
+﻿@model Tuple<List<Lab4.Code.DataObjects.BlogPost>, List<Lab4.Code.DataObjects.Inventory>>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Home";
 
 }
-@section header { <h1>Hackermans</h1> }
+@section header { <h1>Home</h1> }
 @section footer { &copy Eliza Henderson forever }
 
-<img src="https://s-media-cache-ak0.pinimg.com/originals/39/07/78/390778e2526be7ee9c6b373f8f4e91fd.jpg" /><br/>
+<h2>Newest Blog Posts</h2>
+@Html.Partial("~/Views/Shared/_BlogPostLinkList.cshtml", Model.Item1)
 
-@Html.Partial("~/Views/Shared/_BlogPostLinkList.cshtml", Model)
-small peice of content? 
+<h2>Some Inventory</h2>
+@Html.Partial("~/Views/Shared/_InventoryList.cshtml", Model.Item2)
 <br /><br /><br /><br /><br />

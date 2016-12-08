@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Lab4.Code.DataObjects.Inventory>
+@foreach (var link in Model)
+{
+    @Html.Raw(link.ProductName)<br/>
+    if (link.FileName != null)
+    {
+        string thingy = "data:" + link.ImageType + ";base64," + Convert.ToBase64String(link.ProductImage);
+        <img class="thumbnail" src='@thingy' alt="@link.FileName" style="width: 5em; height:5em" />
+    }
+    <br />
+    @Html.Raw("Product Code:" + @link.ProductCode) <br />
+    @Html.Raw("Description: " + link.ProductDescription)<br />
+    @Html.Raw("Price: " + link.Price) <br />
+    @Html.Raw("Quantity: " + link.Quantity)<br />
+} 

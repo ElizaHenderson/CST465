@@ -21,7 +21,7 @@ namespace Lab4
             // it is NOT necessary to register your controllers
 
             // e.g. container.RegisterType<ITestService, TestService>();
-            container.RegisterType<IDataEntityRepository<BlogPost>, BlogDBRepository2>();
+            container.RegisterType<IDataEntityRepository<BlogPost>, BlogDBRepository>();
             
             container.RegisterType<DbContext, ApplicationDbContext>(new HierarchicalLifetimeManager());
             container.RegisterType<UserManager<ApplicationUser>>(new HierarchicalLifetimeManager());

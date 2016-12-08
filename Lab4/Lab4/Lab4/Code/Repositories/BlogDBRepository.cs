@@ -74,12 +74,11 @@ namespace Lab4.Code.Repositories
                     command.Connection = connection;
                     if(entity.ID == 0)
                     {
-                        command.CommandText = "INSERT INTO Blogs(Author, Title, Content) VALUES(@Title, @Content, @Author)";
-                        command.Parameters.AddWithValue("@Author", entity.Author); 
+                        command.CommandText = "INSERT INTO Blog(Author, Title, Content) VALUES(@Author, @Title, @Content)";
                     }
                     else
                     {
-                        command.CommandText = "UPDATE Blog SET Title=@Title, Content=@Content WHERE ID=@ID";
+                        command.CommandText = "UPDATE Blog SET Title=@Title, Content=@Content, Author=@Author WHERE ID=@ID";
                         command.Parameters.AddWithValue("@ID", entity.ID);
                     }
                     command.Parameters.AddWithValue("@Author", entity.Author);
